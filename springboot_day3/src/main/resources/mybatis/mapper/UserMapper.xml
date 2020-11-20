@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hansheng.springboot.mapper.UserMapper">
+    <!-- pojo对象和表之间的 字段和属性的映射关系  column 表里的字段  property 实体对象里的属性-->
+    <resultMap type="com.hansheng.springboot.entity.Accounts" id="BaseResultMap">
+        <result column="login_name" property="loginName"/>
+        <result column="password" property="password"/>
+    </resultMap>
+    <select id="getAccounts" resultMap="BaseResultMap">
+        select * from tbl_accounts
+    </select>
+
+    <insert id="add" parameterType="com.hansheng.springboot.entity.Accounts">
+        insert into tbl_accounts (login_name,password)
+        values(
+        #{loginName},#{password}
+        )
+    </insert>
+</mapper>
